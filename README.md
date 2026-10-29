@@ -25,20 +25,20 @@ A Python-based project that uses Retrieval-Augmented Generation (RAG) to help QA
 
 ```text
 data/
-  documents/
-    authentication_requirements.md
-  vector_store/
+├── documents/
+│   └── authentication_requirements.md
+└── vector_store/
 src/
-  answer_generator.py
-  chunker.py
-  config.py
-  document_loader.py
-  embeddings.py
-  qa_analyzer.py
-  rag_pipeline.py
-  retriever.py
-  test_rag_unknown.py
-  vector_store.py
+├── answer_generator.py
+├── chunker.py
+├── config.py
+├── document_loader.py
+├── embeddings.py
+├── qa_analyzer.py
+├── rag_pipeline.py
+├── retriever.py
+├── test_rag_unknown.py
+└── vector_store.py
 .env.example
 requirements.txt
 README.md
@@ -59,7 +59,7 @@ git clone https://github.com/bailona/ai-requirements-rag.git
 cd ai-requirements-rag
 ```
 
-Create a virtual environment in Windows PowerShell:
+Create and activate a virtual environment in Windows PowerShell:
 
 ```powershell
 python -m venv .venv
@@ -76,7 +76,7 @@ python -m pip install -r requirements.txt
 
 Create a `.env` file in the project root, using `.env.example` as a reference.
 
-Add your API key:
+Add your API key to the `.env` file:
 
 ```dotenv
 OPENAI_API_KEY=your_openai_api_key_here
@@ -92,11 +92,51 @@ From the project root, execute:
 python -m src.qa_analyzer
 ```
 
-The current example analyzes password reset requirements and generates a structured QA report.
+The example analyzes password reset requirements and generates a structured QA report using the configured OpenAI model.
 
 ## Expected Analysis
 
 The report may include:
 
 - Requirement traceability IDs.
-- Test case descriptions and pre
+- Test case descriptions and preconditions.
+- Test data, execution steps, and expected results.
+- Positive, negative, and edge-case scenarios.
+- Gherkin scenarios using Given, When, and Then.
+- Missing information requiring clarification.
+- References to retrieved source documents and sections.
+
+The generated output depends on the requirements retrieved and the model response.
+
+## Testing
+
+Run the available tests with:
+
+```powershell
+python -m pytest
+```
+
+Review the test results to confirm the current behavior of the project.
+
+## Limitations
+
+- AI-generated scenarios require human review.
+- Requirement-to-test mappings must be checked against the original requirements.
+- Ambiguous business rules should be clarified with stakeholders.
+- Security requirements may need measurable acceptance criteria.
+- Generating a test scenario does not mean the test has been executed.
+- OpenAI API usage may incur costs.
+
+## Project Goal
+
+This project explores how AI and RAG can support requirements analysis, test design, and traceability in modern Quality Engineering.
+
+It is part of my portfolio exploring the intersection of Software Quality Assurance, Test Automation, and AI Engineering.
+
+## Author
+
+**Paulo Anderson Bailona**
+
+GitHub: https://github.com/bailona
+
+Project repository: https://github.com/bailona/ai-requirements-rag
